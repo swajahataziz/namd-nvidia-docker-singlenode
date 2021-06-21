@@ -1,0 +1,14 @@
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="==MYBOUNDARY=="
+
+--==MYBOUNDARY==
+Content-Type: text/cloud-config; charset="us-ascii"
+
+runcmd:
+- yum –exclude=nvidia* update -y
+- mkfs -t ext4 /dev/sdb
+- mkdir /scratch
+- echo -e '/dev/sdb\t/scratch\text4\tdefaults\t0\t0' | sudo tee -a /etc/fstab
+- mount /scratch
+
+--==MYBOUNDARY==--

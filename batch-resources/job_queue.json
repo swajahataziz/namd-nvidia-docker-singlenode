@@ -1,0 +1,11 @@
+{
+  "jobQueueName": "namd-job-queue",
+  "state": "ENABLED",
+  "priority": 10,
+  "computeEnvironmentOrder": [
+    {
+      "order": 1,
+      "computeEnvironment": "namd-compute-environment"
+    }
+  ]
+}
