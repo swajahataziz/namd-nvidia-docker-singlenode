@@ -5,8 +5,8 @@ cat > ~/environment/namd-aws-batch/test-job-definition.json << EOF
     "parameters": {},
     "containerProperties": {
         "image": "$ECR_REPOSITORY_URI:latest",
-        "vcpus": 20,
-        "memory": 8000,
+        "vcpus": 4,
+        "memory": 60000,
         "command": [],
         "jobRoleArn": "arn:aws:iam::$ACCOUNT:role/BatchJobRole",
         "volumes": [
