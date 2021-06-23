@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MIT-0
 
 #!/bin/bash
-# Launch supervisor
+# Load variables
 BASENAME="${0##*/}"
 log () {
    echo "${BASENAME} - ${1}"
@@ -11,8 +11,6 @@ log () {
  HOST_FILE_PATH="/tmp/hostfile"
 # aws s3 cp $S3_INPUT $SCRATCH_DIR
 
-
-log "Running as master node"
 
 touch $HOST_FILE_PATH
 ip=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
@@ -42,6 +40,5 @@ log "copy data to S3"
 aws s3 cp $JOB_DIR/batch_output_$AWS_BATCH_JOB_ID.tar.gz $S3_OUTPUT/batch_output_$AWS_BATCH_JOB_ID.tar.gz
 
 log "done! goodbye, writing exit code to 
-$AWS_BATCH_EXIT_CODE_FILE and shutting down my supervisord"
+$AWS_BATCH_EXIT_CODE_FILE and shutting down"
 echo "0" > $AWS_BATCH_EXIT_CODE_FILE
-# exit 0
